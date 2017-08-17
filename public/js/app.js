@@ -22,7 +22,7 @@ app.controller('MyController', ['$http', function($http) {
   }
 
   this.createDevMovie =function(){
-console.log("createTodo");
+console.log("createDevMovie");
     $http({
       method: 'POST',
       url: '/devMovies',

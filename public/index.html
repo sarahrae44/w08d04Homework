@@ -12,23 +12,21 @@
     <h2>Movies for Overworked Developers</h2>
       <h5>Here you can check out Quality movies, recommended by the most overworked, stressed-out, sleep-deprived developers. If you are a an overworked developer, feel free to add your own! </h5>
 <uL>
-      <li
-          ng-class="(todo.complete) ? 'complete' : 'incomplete'"
-          ng-repeat="todo in ctrl.todos">
-          <span ng-click="ctrl.updateToDo(todo);">
-          {{todo.description}}</span>
-          <button ng-click="ctrl.deleteTodo(todo)">Delete this Todo</button>
-          <a href="#" ng-click="ctrl.IndexOfEditFormToShow = $index">Edit this Todo</a>
-          <form ng-if="$index === ctrl.IndexOfEditFormToShow" ng-submit="ctrl.editTodo(todo);">
+      <li ng-repeat="devMovie in ctrl.devMovies">
+          {{devMovie.title}}</li>
+          {{2+2}}
+          <!-- <button ng-click="ctrl.deleteTodo(todo)">Delete this Todo</button> -->
+          <!-- <a href="#" ng-click="ctrl.IndexOfEditFormToShow = $index">Edit this Todo</a> -->
+          <!-- <form ng-if="$index === ctrl.IndexOfEditFormToShow" ng-submit="ctrl.editTodo(todo);">
             <input type="text"  ng-model="ctrl.updatedDescription" placeholder="description"/>
             <input type= "Submit"  value="update description"></h6>
-          </form></li>
+          </form></li> -->
 </ul>
-      <form ng-submit="ctrl.createTodo()">
-        <h4> Create a new item</h4>
-        <input type="text"  ng-model="ctrl.description" placeholder="description"/>
-        <h6>Complete<input type="checkbox" ng-model="ctrl.complete"/>
-        <input type= "Submit"  value="Create new To Do item"></h6>
+      <form ng-submit="ctrl.createDevMovie()">
+        <h4> Recommend a New Movie!</h4>
+        <input type="text"  ng-model="ctrl.title" placeholder="Title"/>
+        <input type="text"  ng-model="ctrl.year" placeholder="year of release"/>
+        <input type= "Submit"  value="submit recommendation"></h6>
       </form>
 
   </body>
