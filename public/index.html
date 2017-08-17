@@ -5,7 +5,7 @@
     <title></title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js" charset="utf-8"></script>
     <script src="/js/app.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="/css/app.css" />
+    <link rel="stylesheet" href="/css/main.css" />
   </head>
   <body ng-controller ="MyController as ctrl">
 
@@ -13,22 +13,23 @@
       <h5>Here you can check out Quality movies, recommended by the most overworked, stressed-out, sleep-deprived developers. If you are a an overworked developer, feel free to add your own! </h5>
 <uL>
       <li
-          ng-class="(todo.complete) ? 'complete' : 'incomplete'"
-          ng-repeat="todo in ctrl.todos">
-          <span ng-click="ctrl.updateToDo(todo);">
-          {{todo.description}}</span>
-          <button ng-click="ctrl.deleteTodo(todo)">Delete this Todo</button>
-          <a href="#" ng-click="ctrl.IndexOfEditFormToShow = $index">Edit this Todo</a>
-          <form ng-if="$index === ctrl.IndexOfEditFormToShow" ng-submit="ctrl.editTodo(todo);">
-            <input type="text"  ng-model="ctrl.updatedDescription" placeholder="description"/>
-            <input type= "Submit"  value="update description"></h6>
+          ng-repeat="devMovie in ctrl.devMovies">
+          <span ng-click="ctrl.updateDevMovie(devMovie);">
+          {{ devMovie.title }} ({{ devMovie.year }})</span>
+          <button ng-click="ctrl.deleteDevMovie(devMovie)">Delete this movie</button>
+          <a href="#" ng-click="ctrl.IndexOfEditFormToShow = $index">Edit this movie</a>
+          <form ng-if="$index === ctrl.IndexOfEditFormToShow" ng-submit="ctrl.editDevMovie(devMovie);">
+            <input type="text"  ng-model="ctrl.updatedTitle" placeholder="Title"/>
+            <input type="text"  ng-model="ctrl.updatedYear" placeholder="Year"/>
+            <input type= "Submit"  value="Update movie"></h6>
           </form></li>
 </ul>
-      <form ng-submit="ctrl.createTodo()">
-        <h4> Create a new item</h4>
-        <input type="text"  ng-model="ctrl.description" placeholder="description"/>
-        <h6>Complete<input type="checkbox" ng-model="ctrl.complete"/>
-        <input type= "Submit"  value="Create new To Do item"></h6>
+      <form ng-submit="ctrl.createDevMovie();">
+        <h4> Add a new movie</h4>
+        Movie Title: <input type="text"  ng-model="ctrl.title" placeholder="Title"><br/>
+        Year: <input type="text"  ng-model="ctrl.year" placeholder="Year"/>
+        <!-- <h6>Complete<input type="checkbox" ng-model="ctrl.complete"/> -->
+        <h6><input type= "Submit"  value="Add"></h6>
       </form>
 
   </body>

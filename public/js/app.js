@@ -1,28 +1,25 @@
 const app = angular.module('MyApp', []);
 
 app.controller('MyController', ['$http', function($http) {
-
   const controller=this;
+  this.devMovies = [];
+  this.indexOfEditFormToShow = 0;
 
-
-  this.getDevMovies =function(){
-
+  this.getDevMovies = function(){
     $http({
       method: 'GET',
       url: '/devMovies'
     }).then(
       function(response){
-        controller.devMovies=response.data
-
+        controller.devMovies = response.data;
       },
       function(error){
 
       }
-    )
+    );
   }
 
-  this.createDevMovie =function(){
-console.log("createTodo");
+  this.createDevMovie = function(){
     $http({
       method: 'POST',
       url: '/devMovies',
@@ -37,41 +34,34 @@ console.log("createTodo");
         function(error){
 
         }
-    );
+    )
   }
 
-  this.updateDevMovie = function(todo){
-    let NewComplete;
-    if(todo.complete === true){
-      newComplete = false;
-    } else {
-        newComplete = true;
-      }
-      $http({
-        method: 'PUT',
-        url: '/devMovies/' + devMovie._id,
-        data: {
-          description: todo.description,
-          complete: newComplete
-        }
-      }).then(
-        function(response){
-          controller.getDevMovies();
-        },
-        function(error){
+  // this.updateDevMovie = function(devMovie){
+  //   $http({
+  //     method: 'PUT',
+  //     url: '/devMovies/' + devMovie._id,
+  //     data: {
+  //       title: devMovie.title,
+  //       year: devMovie.year
+  //     }
+  //   }).then(
+  //     function(response){
+  //       controller.getDevMovies();
+  //     },
+  //     function(error){
+  //
+  //     }
+  //   )
+  // }
 
-        }
-      );
-    }
-
-    this.editDevMovie = function(todo){
-    console.log(todo);
+    this.editDevMovie = function(devMovie){
         $http({
           method: 'PUT',
           url: '/devMovies/' + devMovie._id,
           data: {
-            title: this.title,
-            year: this.year
+            title: this.updatedTitle,
+            year: this.updatedYear
           }
         }).then(
           function(response){
@@ -83,17 +73,16 @@ console.log("createTodo");
         );
       }
 
-   this.deleteDevMovie = function(todo){
-     console.log(todo);
+   this.deleteDevMovie = function(devMovie){
      $http({
        method: 'DELETE',
        url: '/devMovies/' + devMovie._id,
-
      }).then(
        function(response){
          controller.getDevMovies();
        },
        function(error){
+
         }
      );
    }
