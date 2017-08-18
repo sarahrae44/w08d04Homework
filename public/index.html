@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html  ng-app="MyApp">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.5/angular.min.js" charset="utf-8"></script>
+    <script src="/js/app.js" charset="utf-8"></script>
+
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body ng-controller ="MyController as ctrl">
+
+    <h1>Movies for Overworked Developers</h1>
+    <h3>Here you can check out Quality movies, recommended by the most overworked, stressed-out, sleep-deprived developers. If you are a an overworked developer, feel free to add your own! </h3>
+    <div class="movieList">
+<uL>
+  <li ng-repeat="devMovie in ctrl.devMovies">
+    <span ng-click="ctrl.updateDevMovie(devMovie);">{{ devMovie.title }} {{ devMovie.year }}</span><br/>
+    <button ng-click="ctrl.deleteDevMovie(devMovie)">Delete this movie</button><br/>
+    <a href="#" ng-click="ctrl.IndexOfEditFormToShow = $index">Edit this movie</a>
+        <form ng-if="$index === ctrl.IndexOfEditFormToShow" ng-submit="ctrl.editDevMovie(devMovie);">
+          <input type="text"  ng-model="ctrl.updatedTitle" placeholder="Title"/>
+          <input type="text"  ng-model="ctrl.updatedYear" placeholder="Year"/>
+          <input type= "Submit"  value="Update movie"></h6>
+          </form>
+        </li>
+      </ul>
+  </div>
+      <form ng-submit="ctrl.createDevMovie()">
+        <h4> Recommend a New Movie!</h4>
+        Movie Title: <input type="text"  ng-model="ctrl.title" placeholder="Title"/>
+        Year: <input type="text"  ng-model="ctrl.year" placeholder="Year"/>
+        <input type= "Submit"  value="Add"></h6>
+
+      </form>
+    </li>
+  </ul>
+</div>
+  </body>
+</html>
