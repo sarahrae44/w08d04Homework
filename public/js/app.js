@@ -1,10 +1,10 @@
 const app = angular.module('MyApp', []);
 
 app.controller('MyController', ['$http', function($http) {
-
   const controller=this;
   this.devMovies = [];
   this.indexOfEditFormToShow = 0;
+
 
   this.getDevMovies =function(){
 
@@ -13,13 +13,13 @@ app.controller('MyController', ['$http', function($http) {
       url: '/devMovies'
     }).then(
       function(response){
-        controller.devMovies=response.data
 console.log(controller.devMovies);
+        controller.devMovies = response.data;
       },
       function(error){
 
       }
-    )
+    );
   }
 
   this.createDevMovie = function(){
@@ -38,35 +38,12 @@ console.log("createDevMovie");
         function(error){
 
         }
-    );
+    )
   }
 
-  // this.updateDevMovie = function(todo){
-  //   let NewComplete;
-  //   if(todo.complete === true){
-  //     newComplete = false;
-  //   } else {
-  //       newComplete = true;
-  //     }
-  //     $http({
-  //       method: 'PUT',
-  //       url: '/devMovies/' + devMovie._id,
-  //       data: {
-  //         description: todo.description,
-  //         complete: newComplete
-  //       }
-  //     }).then(
-  //       function(response){
-  //         controller.getDevMovies();
-  //       },
-  //       function(error){
-  //
-  //       }
-  //     );
-  //   }
+
 
     this.editDevMovie = function(devMovie){
-
         $http({
           method: 'PUT',
           url: '/devMovies/' + devMovie._id,
@@ -85,16 +62,15 @@ console.log("createDevMovie");
       }
 
    this.deleteDevMovie = function(devMovie){
-
      $http({
        method: 'DELETE',
        url: '/devMovies/' + devMovie._id,
-
      }).then(
        function(response){
          controller.getDevMovies();
        },
        function(error){
+
         }
      );
    }
