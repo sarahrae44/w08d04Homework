@@ -9,6 +9,7 @@ router.get('/', function(req, res){
 });
 
 router.post('/', (req,res)=>{
+  console.log(req.body);
   DevMovies.create(req.body, function(err, createdDevMovie){
        res.json(createdDevMovie);
      });

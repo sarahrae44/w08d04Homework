@@ -5,12 +5,15 @@ app.controller('MyController', ['$http', function($http) {
   this.devMovies = [];
   this.indexOfEditFormToShow = 0;
 
-  this.getDevMovies = function(){
+
+  this.getDevMovies =function(){
+
     $http({
       method: 'GET',
       url: '/devMovies'
     }).then(
       function(response){
+console.log(controller.devMovies);
         controller.devMovies = response.data;
       },
       function(error){
@@ -20,6 +23,7 @@ app.controller('MyController', ['$http', function($http) {
   }
 
   this.createDevMovie = function(){
+console.log("createDevMovie");
     $http({
       method: 'POST',
       url: '/devMovies',
@@ -37,23 +41,7 @@ app.controller('MyController', ['$http', function($http) {
     )
   }
 
-  // this.updateDevMovie = function(devMovie){
-  //   $http({
-  //     method: 'PUT',
-  //     url: '/devMovies/' + devMovie._id,
-  //     data: {
-  //       title: devMovie.title,
-  //       year: devMovie.year
-  //     }
-  //   }).then(
-  //     function(response){
-  //       controller.getDevMovies();
-  //     },
-  //     function(error){
-  //
-  //     }
-  //   )
-  // }
+
 
     this.editDevMovie = function(devMovie){
         $http({
@@ -87,6 +75,6 @@ app.controller('MyController', ['$http', function($http) {
      );
    }
 
-
+  this.createDevMovie();
   this.getDevMovies();
 }])
