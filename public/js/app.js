@@ -13,7 +13,6 @@ app.controller('MyController', ['$http', function($http) {
       url: '/devMovies'
     }).then(
       function(response){
-console.log(controller.devMovies);
         controller.devMovies = response.data;
       },
       function(error){
@@ -23,7 +22,6 @@ console.log(controller.devMovies);
   }
 
   this.createDevMovie = function(){
-console.log("createDevMovie");
     $http({
       method: 'POST',
       url: '/devMovies',
@@ -75,6 +73,6 @@ console.log("createDevMovie");
      );
    }
 
-  this.createDevMovie();
+  // this.createDevMovie();
   this.getDevMovies();
 }])
