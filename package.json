@@ -18,8 +18,8 @@
   },
   "homepage": "https://github.com/sarahrae44/w08d04Homework#readme",
   "dependencies": {
-    "body-parser": "^1.17.2",
-    "express": "^4.15.4",
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
     "mongoose": "^4.11.7"
   }
 }
